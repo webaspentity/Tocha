@@ -2,11 +2,12 @@
 
 public static class AppData
 {
+    public static Components.Burger Burger { get; set; }
     public static Components.Menu Menu { get; set; }
     public static bool Autorized { get; set; }
     public static bool BurgerActive { get; set; }
-    public static bool LoginSectionActive { get; set; }
-    public static bool RegistrationSectionActive { get; set; }
+    public static bool LoginActive { get; set; }
+    public static bool RegistrationActive { get; set; }
 
     public static List<TariffModel> Tariffs = new List<TariffModel>()
     {

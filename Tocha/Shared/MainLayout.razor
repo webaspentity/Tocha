@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<Header LoginClick="()=> lf?.Open()" RegistrationClick="()=> rf?.Open()"/>
+<Header LoginClick="OnLoginClick" RegistrationClick="OnRegistrationClick"/>
 
 <div class="page">
     <main>
@@ -18,4 +18,18 @@
 @code{
     private LoginForm? lf;
     private RegistrationForm? rf;
+
+    private void OnLoginClick()
+    {
+        if (AppData.RegistrationActive) { rf?.Close(); AppData.RegistrationActive = false; }
+        lf?.Open();
+        if (AppData.BurgerActive) { AppData.BurgerActive = false;}
+    }
+
+    private void OnRegistrationClick()
+    {
+        if (AppData.LoginActive) { lf?.Close(); AppData.LoginActive = false; }
+        rf?.Open();
+        if (AppData.BurgerActive) { AppData.BurgerActive = false; StateHasChanged(); }
+    }
 }

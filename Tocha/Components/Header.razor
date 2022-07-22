@@ -1,8 +1,8 @@
 ﻿<header class="header">
     <Container Class="header__container">
         <Logo />
-        <Menu LoginButtonClick="LoginClick" RegistrationButtonClick="RegistrationClick" @ref=AppData.Menu/>
-        <Burger OnClick="OnBurgerClick"/>
+        <Menu LoginButtonClick="OnLoginClick" RegistrationButtonClick="OnRegistrationClick" @ref=AppData.Menu MenuClick="MenuClick"/>
+        <Burger OnClick="OnBurgerClick" @ref=AppData.Burger/>
     </Container>
 </header>
 
@@ -24,5 +24,22 @@
         {
             AppData.Menu.Open = false;
         }
+    }
+
+    private void OnLoginClick()
+    {
+        if (AppData.Menu.Open) AppData.Menu.Open = false;
+        LoginClick.InvokeAsync();
+    }
+
+    private void OnRegistrationClick()
+    {
+        if (AppData.Menu.Open) AppData.Menu.Open = false;
+        RegistrationClick.InvokeAsync();
+    }
+
+    private void MenuClick()
+    {
+        OnBurgerClick();
     }
 }

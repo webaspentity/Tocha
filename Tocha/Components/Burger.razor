@@ -9,4 +9,9 @@
 @code{
     [Parameter]
     public EventCallback OnClick { get; set; }
+
+    public void Refresh()
+    {
+        StateHasChanged();
+    }
 }

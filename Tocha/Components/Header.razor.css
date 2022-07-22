@@ -7,3 +7,20 @@
         justify-content: space-between;
         align-items: center;
     }
+
+@media (max-width: 450px) {
+    .header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #F8FBFF;
+        padding: 0;
+        z-index: 50;
+        margin: 0 -10px;
+    }
+
+        .header ::deep .header__container {
+            padding: 10px;
+        }
+}

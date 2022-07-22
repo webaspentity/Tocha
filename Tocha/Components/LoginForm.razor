@@ -1,9 +1,9 @@
 ﻿@inject IJSRuntime js
 
-<div class=@((active) ? "form-wrapper active" : "form-wrapper") @onclick="()=> active = false">
+<div class=@((AppData.LoginActive) ? "form-wrapper active" : "form-wrapper") @onclick="()=> AppData.LoginActive = false">
     <div class="form" @onclick:stopPropagation>
         <div class="form__header">
-            <Button ButtonType="ButtonType.Close" OnClick="()=> active = false" />
+            <Button ButtonType="ButtonType.Close" OnClick="()=> AppData.LoginActive = false" />
         </div>
         <Title>Вход</Title>
         <EditForm Model="@model" method="post" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <Button Title="Войти" ButtonType="ButtonType.Submit" Label="Войти" Color="Colors.Purple"/>
+                <Button Title="Войти" ButtonType="ButtonType.Submit" Label="Войти" Color="Colors.Purple" />
 
             </fieldset>
 
@@ -38,7 +38,6 @@
 </div>
 
 @code {
-    private bool active;
     private LoginModel model = new LoginModel();
     private string inputType = "password";
 
@@ -50,7 +49,7 @@
     private async void OnValidSubmit()
     {
         AppData.Autorized = true;
-        active = false;
+        AppData.LoginActive = false;
         AppData.Menu.Refresh();
     }
 
@@ -61,8 +60,13 @@
 
     public async void Open()
     {
-        active = true;
+        AppData.LoginActive = true;
         StateHasChanged();
         await js.InvokeVoidAsync("SetFocus", "log-mask");
+    }
+
+    public void Close()
+    {
+        AppData.LoginActive = false;
     }
 }

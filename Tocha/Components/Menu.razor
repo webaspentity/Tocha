@@ -1,23 +1,23 @@
 ﻿@inject IJSRuntime js
 
-<div class=@((Open) ? "appmenu open" : "appmenu")>
+<div class=@((Open) ? "appmenu open" : "appmenu") @onclick="MenuClick" @onclick:stopPropagation>
     @if (AppData.Autorized)
     {
         <nav class="menu">
-            <ul class="menu__items">
+            <ul class="menu__items" @onclick:stopPropagation>
                 @foreach (MenuLink link in AppData.MenuLinks)
                 {
                     <li class="menu__item">
-                        <a href="#" @onclick:preventDefault @onclick="()=> Scroll(link.Url)" class="menu__link">@link.Title</a>
+                        <a href="#" @onclick:preventDefault @onclick="()=> OnLinkClick(link.Url)" class="menu__link">@link.Title</a>
                     </li>
                 }
-                <a href="#" class="menu__link" @onclick:preventDefault @onclick="()=> AppData.Autorized = false">Выход</a>
+                <a href="#" class="menu__link" @onclick:preventDefault @onclick="AutorizationOut">Выход</a>
             </ul>
         </nav>
     }
     else
     {
-        <div class="autorization">
+        <div class="autorization" @onclick:stopPropagation>
             <Button ButtonType="ButtonType.Button" Title="Вход" Label="Вход" Color="Colors.Pink" Class="autorization__button" OnClick="LoginButtonClick" />
             <Button ButtonType="ButtonType.Button" Title="Регистрация" Label="Регистрация" Color="Colors.Purple" Class="autorization__button" OnClick="RegistrationButtonClick" />
         </div>
@@ -25,6 +25,9 @@
 </div>
 
 @code {
+
+    [Parameter]
+    public EventCallback MenuClick { get; set; }
 
     private async Task Scroll(string id)
     {
@@ -45,4 +48,16 @@
         StateHasChanged();
     }
 
+    private void OnLinkClick(string url)
+    {
+        Scroll(url);
+        MenuClick.InvokeAsync();
+    }
+
+    private void AutorizationOut()
+    {
+        AppData.Autorized = false;
+        if (AppData.Menu.Open) AppData.Menu.Open = false;
+        if (AppData.BurgerActive) { AppData.BurgerActive = false; AppData.Burger.Refresh(); }
+    }
 }

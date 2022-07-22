@@ -125,7 +125,7 @@ body {
     }
 
 .form-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -200vw;
     width: 100%;
@@ -135,12 +135,8 @@ body {
     align-items: center;
     transition: .4s ease;
     z-index: 15;
-    background: #F8FBFF;
+    background: transparent;
 }
-
-    .form-wrapper:focus{
-        background: yellow;
-    }
 
     .form-wrapper .form {
         flex: 1 1 480px;

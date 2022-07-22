@@ -1,0 +1,16 @@
+﻿<section class="features-section">
+    <Container>
+        <div class="features-section__features">
+            <SectionTitle >Tocha Online — это</SectionTitle>
+            @foreach(FeatureModel feature in AppData.Features)
+            {
+                <Feature Item="feature"/>
+            }
+        </div>
+        <Phone Items="AppData.Messages"/>
+    </Container>
+</section>
+
+@code {
+
+}

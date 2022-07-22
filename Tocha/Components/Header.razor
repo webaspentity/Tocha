@@ -1,0 +1,28 @@
+﻿<header class="header">
+    <Container Class="header__container">
+        <Logo />
+        <Menu LoginButtonClick="LoginClick" RegistrationButtonClick="RegistrationClick" @ref=AppData.Menu/>
+        <Burger OnClick="OnBurgerClick"/>
+    </Container>
+</header>
+
+@code {
+    [Parameter]
+    public EventCallback LoginClick { get; set; }
+
+    [Parameter]
+    public EventCallback RegistrationClick { get; set; }
+
+    private void OnBurgerClick()
+    {
+        AppData.BurgerActive = !AppData.BurgerActive;
+        if (AppData.BurgerActive)
+        {
+            AppData.Menu.Open = true;
+        }
+        else
+        {
+            AppData.Menu.Open = false;
+        }
+    }
+}

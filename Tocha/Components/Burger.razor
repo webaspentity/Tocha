@@ -1,0 +1,12 @@
+﻿<button class=@((AppData.BurgerActive) ? "burger active" : "burger")
+        @onclick="OnClick"
+        type="button" aria-label="Открыть / Закрыть меню">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+@code{
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+}

@@ -1,0 +1,17 @@
+﻿.section-title {
+    font-size: 3.125rem;
+    font-weight: 800;
+    color: #1D2530;
+    margin: 0;
+}
+
+    .section-title span {
+        display: block;
+        color: #685ED6;
+    }
+
+@media (max-width: 768px){
+    .section-title {
+        font-size: 2rem;
+    }
+}

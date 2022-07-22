@@ -1,0 +1,73 @@
+﻿@typeparam T
+
+<div class="carousel">
+    <div class="carousel__items" 
+        style="transform:translate3d(-@(current * MoveStep)px,0,0)" 
+        @ontouchstart="OnTouchStartHandler" 
+        @ontouchend="OnTouchEndHandler">
+        @if (Items is not null)
+        {
+            @foreach (T item in Items)
+            {
+                @if (typeof(T) == typeof(TariffModel))
+                {
+                    <TariffCard Item="@(item as TariffModel)" />
+                }
+                @if (typeof(T) == typeof(StepModel))
+                {
+                    <Step Item="@(item as StepModel)"/>
+                }
+                @if (typeof(T) == typeof(TestimonialModel))
+                {
+                    <TestimonialCard Item="@(item as TestimonialModel)"/>
+                }
+            }
+        }
+    </div>
+
+    <div class="carousel__pagination">
+        @if (Items is not null)
+        {
+            @for (int i = 0; i < Items.Count; i++)
+            {
+                <CarouselBullet Order="i" @bind-Current=current />
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private int current = 0;
+    private double touchStart;
+    private double touchEnd;
+
+    [Parameter]
+    public List<T>? Items { get; set; }
+    [Parameter]
+    public int MoveStep { get; set; }
+
+    private void OnTouchStartHandler(TouchEventArgs t)
+    {
+        touchStart = t.Touches[0].ClientX;
+    }
+
+    private void OnTouchEndHandler(TouchEventArgs t)
+    {
+        touchEnd = t.ChangedTouches[0].ClientX;
+        if ((touchStart - touchEnd) > 0)
+        {
+            if (current < Items.Count - 1)
+            {
+                current += 1;
+            }
+        }
+        else if ((touchStart - touchEnd) < 0)
+        {
+            if(current > 0)
+            {
+                current -= 1;
+            }
+        }
+    }
+
+}

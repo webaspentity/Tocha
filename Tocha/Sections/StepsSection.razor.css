@@ -1,0 +1,82 @@
+﻿.steps-section {
+    background: #FFF;
+    margin: 0 -10px;
+    padding: 4rem 0;
+    background: url('images/steps_bg.png') bottom no-repeat fixed;
+}
+
+    .steps-section ::deep .container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+
+    .steps-section ::deep .carousel__items {
+        justify-content: space-between;
+    }
+
+    .steps-section ::deep .carousel__items .step:nth-child(even) {
+        margin-top: 3.125rem;
+    }
+
+    .steps-section ::deep .carousel__items .step {
+        position: relative;
+        flex: 0 0 300px;
+    }
+
+        .steps-section ::deep .carousel__items .step:nth-child(odd):not(:last-child)::after {
+            position: absolute;
+            top: 0;
+            display: inline-block;
+            width: 320px;
+            height: 100px;
+            content: "";
+            background: url('images/step_down.svg') no-repeat;
+            right: -77%;
+        }
+
+        .steps-section ::deep .carousel__items .step:nth-child(even):not(:last-child)::after {
+            position: absolute;
+            top: -10%;
+            display: inline-block;
+            width: 320px;
+            height: 100px;
+            content: "";
+            background: url('images/step_up.svg') no-repeat;
+            right: -75%;
+        }
+
+    .steps-section ::deep .section-title {
+        text-align: center;
+    }
+
+    .steps-section ::deep .carousel {
+        height: min-content;
+    }
+
+@media (max-width: 950px) {
+    .steps-section ::deep .carousel__items .step:nth-child(odd):not(:last-child)::after,
+    .steps-section ::deep .carousel__items .step:nth-child(even):not(:last-child)::after {
+        display: none;
+    }
+
+    .steps-section ::deep .carousel__items .step:nth-child(even) {
+        margin-top: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    .steps-section {
+        padding: 3.375rem 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .steps-section {
+        padding: 3.375rem 0;
+    }
+
+        .steps-section ::deep .carousel__items {
+            column-gap: 0.5rem;
+        }
+}

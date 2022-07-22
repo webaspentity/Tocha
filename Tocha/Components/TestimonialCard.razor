@@ -1,0 +1,18 @@
+﻿<div class="testimonial-card">
+    <div class="testimonial-card__content">
+        <p class="testimonial-card__title">@Item?.Title</p>
+        <p class="testimonial-card__text">@Item?.Text</p>
+    </div>
+    <div class="testimonial-card__author">
+        <img class="testimonial-card__avatar" alt="Аватар" src="@Item?.Image"/>
+        <div class="testimonial-card__author-info">
+            <p class="testimonial-card__author-name">@Item?.Author</p>
+            <p class="testimonial-card__author-workplace">@Item?.Workplace</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public TestimonialModel? Item { get; set; }
+}

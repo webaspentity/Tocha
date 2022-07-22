@@ -1,0 +1,14 @@
+﻿.bullet {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    border: 2px solid #685ED6;
+}
+
+    .bullet:hover{
+        cursor: pointer;
+    }
+
+    .bullet.active {
+        background: #685ED6;
+    }

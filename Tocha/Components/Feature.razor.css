@@ -1,0 +1,47 @@
+﻿.feature {
+    max-width: 520px;
+    color: #1D2530;
+    font-family: inherit;
+    display: flex;
+    font-size: 1rem;
+    column-gap: 1.625em;
+}
+
+.feature__icon{
+    width:68px;
+    height: 68px;
+}
+
+.feature__content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+.feature__title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.feature__text{
+    font-weight: 400;
+    margin: 0;
+}
+
+@media (max-width: 768px){
+
+    .feature {
+        column-gap: 1.125em;
+    }
+
+    .feature__icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .feature__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+}

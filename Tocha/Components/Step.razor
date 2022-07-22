@@ -1,0 +1,15 @@
+﻿<div class="step">
+    <div class="step__header">
+        <div class="step__number">@Item?.Number</div>
+        <h4 class="step_title">@Item?.Title</h4>
+        <p class="step__description">@Item?.Description</p>
+    </div>
+    <div class="step__image">
+        <img src="@Item?.Image"/>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public StepModel? Item { get; set; }
+}

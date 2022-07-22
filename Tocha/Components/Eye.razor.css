@@ -1,0 +1,14 @@
+﻿.eye{
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url('images/eye.png') center no-repeat;
+    border: none;
+}
+
+    .eye:hover{
+        cursor: pointer;
+    }
+
+    .eye:focus {
+        outline: none;
+    }

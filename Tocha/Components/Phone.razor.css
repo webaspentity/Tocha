@@ -1,0 +1,46 @@
+﻿.phone {
+    display: inline-block;
+    position: relative;
+    width: 335px;
+    height: 667px;
+}
+
+    .phone img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+.phone__display {
+    position: absolute;
+    width: 85.5%;
+    height: 73.2%;
+    top: 17%;
+    left: 7.3%;
+    background: lightgrey;
+    z-index: 2;
+    padding: 3.5% 3.5% 0 3.5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    box-sizing: border-box;
+}
+
+    .phone__display ::deep div:nth-child(odd) {
+        background: #EFFCDE;
+        margin-left: -3.5%;
+        width: 100%;
+    }
+
+    .phone__display ::deep div:nth-child(even) {
+        background: #F5F7F8;
+    }
+
+    @media (max-width: 768px){
+        .phone{
+            height: 487px;
+            width: 245px;
+        }
+    }

@@ -1,0 +1,31 @@
+﻿.tariffs-section {
+    background-color: #FFF;
+    padding: 100px 0;
+    margin: 0 -10px;
+}
+
+    .tariffs-section ::deep .container{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+
+    .tariffs-section ::deep .section-title {
+        text-align: center;
+    }
+
+    .tariffs-section h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0;
+    }
+
+@media (max-width: 768px){
+    .tariffs-section h3 {
+        font-size: 1.25rem;
+    }
+
+    .tariffs-section {
+        padding: 50px 0;
+    }
+}

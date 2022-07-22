@@ -1,0 +1,39 @@
+﻿.connection-form h3 {
+    margin: 0;
+}
+
+    .form__title {
+        font-size: 2rem;
+        color: #FFF;
+    }
+
+.connection-form .form__elements{
+    flex: 1 1 100%;
+}
+
+.connection-form .form__fieldset {
+    flex-direction: row;
+    column-gap: 2px;
+    align-items: start;
+    max-width: 445px;
+    padding:0; 
+}
+
+.connection-form fieldset ::deep input {
+    height: 45px;
+    padding: 1em;
+}
+
+.connection-form fieldset ::deep .button {
+    background-color: #18191F;
+    color: #FFF;
+    font-family: inherit;
+    min-width: max-content;
+    flex: 0 0 120px;
+}
+
+    @media(max-width: 768px){
+        .form__title {
+            font-size: 1.5rem;
+        }
+    }

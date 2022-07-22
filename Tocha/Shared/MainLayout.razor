@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+
+<Header LoginClick="()=> lf?.Open()" RegistrationClick="()=> rf?.Open()"/>
+
+<div class="page">
+    <main>
+        <article class="content">
+            @Body
+        </article>
+    </main>
+</div>
+
+<Footer />
+
+<LoginForm @ref=lf />
+<RegistrationForm @ref=rf/>
+
+@code{
+    private LoginForm? lf;
+    private RegistrationForm? rf;
+}

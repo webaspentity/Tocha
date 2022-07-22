@@ -1,0 +1,32 @@
+﻿@if (ButtonType == ButtonType.Close)
+{
+    <button class="button-close" type="button" aria-label="Закрыть" @onclick="OnClick">
+        <span></span>
+        <span></span>
+    </button>
+}
+else
+{
+    <button type=@((ButtonType == ButtonType.Button) ? "button" : (ButtonType == ButtonType.Submit) ? "submit" : "reset")
+        aria-label=@Label @onclick="OnClick"
+        class=@((Class is null) ? $"button {Color.ToString().ToLower()}" : $"button {Color.ToString().ToLower()} {Class}")>
+        @Title@ChildContent
+    </button>
+}
+
+@code {
+    [Parameter]
+    public ButtonType ButtonType { get; set; }
+    [Parameter]
+    public Colors Color { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+    [Parameter]
+    public string? Title { get; set; }
+    [Parameter]
+    public string? Class { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

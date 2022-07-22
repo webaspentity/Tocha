@@ -1,0 +1,29 @@
+﻿@inject IJSRuntime js
+
+<section class="first-section">
+    <Container Class="first-section__container">
+        <div class="first-section__content">
+            <SectionTitle Colorized="Telegram чат">
+                на вашем сайте
+            </SectionTitle>
+            <p class="first-section__text">
+                Общение с клиентами станет простым
+                и удобным, а подключение займет 5 минут.
+                Первый месяц — <span>бесплатно</span>!
+            </p>
+            <Button 
+                ButtonType="ButtonType.Button" 
+                Color="Colors.Purple" 
+                Title="Подключить" 
+                Label="Подключить" OnClick="Scroll"/>
+        </div>
+        <div class="first-section__image"><img src="images/fs_image.png" alt="Telegram чат" /></div>
+    </Container>
+</section>
+
+@code {
+    private async Task Scroll()
+    {
+        await js.InvokeVoidAsync("Scroll", "connection");
+    }
+}

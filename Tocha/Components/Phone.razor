@@ -1,0 +1,18 @@
+﻿<div class="phone">
+    <img src="images/phone.svg" />
+    <div class="phone__display">
+        @if (Items is not null)
+        {
+            @foreach (MessageModel message in Items)
+            {
+                <Message Item=@message />
+            }
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<MessageModel>? Items { get; set; }
+}
+

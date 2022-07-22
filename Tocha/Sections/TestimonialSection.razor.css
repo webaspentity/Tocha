@@ -1,0 +1,59 @@
+﻿.testimonial-section {
+    background: #F8FBFF;
+    margin: 0 -10px;
+    padding: 4rem 0;
+}
+
+    .testimonial-section ::deep .section-title {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+        .testimonial-section ::deep .section-title:after {
+            position: absolute;
+            display: inline-block;
+            width: 143px;
+            height: 121px;
+            top: -2rem;
+            right: 0;
+            content: "";
+            background: url('images/quotes.png') no-repeat bottom;
+            z-index: -1;
+        }
+
+    .testimonial-section ::deep .testimonial-card {
+        flex: 0 0 540px;
+    }
+
+    .testimonial-section ::deep .carousel__items {
+        column-gap: 30px;
+        min-height: 300px;
+    }
+
+@media (max-width: 768px) {
+    .testimonial-section ::deep .section-title:after {
+        transform: scale(0.6);
+        top: -5rem;
+    }
+}
+
+@media (max-width: 570px) {
+    .testimonial-section ::deep .testimonial-card {
+        flex: 0 0 300px;
+    }
+
+    .testimonial-section ::deep .carousel__items {
+        column-gap: 270px;
+    }
+
+    .testimonial-section ::deep .carousel {
+        background: url('images/steps_bg.png');
+    }
+}
+
+@media (max-width: 450px) {
+    .testimonial-section ::deep .section-title:after {
+        transform: scale(0.4);
+    }
+}

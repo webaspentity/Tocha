@@ -1,0 +1,187 @@
+﻿/*FONTS=====================================================================================*/
+
+@font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy'), 
+        url('../fonts/Gilroy-Bold.woff2') format('woff2'), 
+        url('../fonts/Gilroy-Bold.woff') format('woff'), 
+        url('../fonts/Gilroy-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy'), 
+        url('../fonts/Gilroy-Regular.woff2') format('woff2'), 
+        url('../fonts/Gilroy-Regular.woff') format('woff'), 
+        url('../fonts/Gilroy-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy'), 
+        url('../fonts/Gilroy-SemiBold.woff2') format('woff2'), 
+        url('../fonts/Gilroy-SemiBold.woff') format('woff'), 
+        url('../fonts/Gilroy-SemiBold.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy'), 
+        url('../fonts/Gilroy-Medium.woff2') format('woff2'), 
+        url('../fonts/Gilroy-Medium.woff') format('woff'), 
+        url('../fonts/Gilroy-Medium.ttf') format('ttf');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: local('Gilroy'), 
+        url('../fonts/Gilroy-ExtraBold.woff2') format('woff2'), 
+        url('../fonts/Gilroy-ExtraBold.woff') format('woff'), 
+        url('../fonts/Gilroy-ExtraBold.ttf') format('ttf');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*END-FONTS=====================================================================================*/
+
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #F8FBFF;
+    font-family: Gilroy;
+    font-weight: 400;
+    color: #1D2530;
+    overflow-x:hidden;
+}
+
+.loading{
+    font-size: 1rem;
+    display: inline-block;
+    padding: 10px;
+}
+
+.wrapper{
+    padding: 0 10px;
+}
+/*FORM ELEMENT ===================================================================================*/
+.element {
+    font-size: 1rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.element__input {
+    background: #F7F7FD;
+    padding: 0.5em 4em 0.5em 1.25em;
+    border-radius: 4px;
+    border: none;
+    transition: .4s ease;
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+}
+
+    .element__input:focus {
+        outline: none;
+        -webkit-box-shadow: 0px 0px 0px 2px rgba(96, 93, 236, 1);
+        -moz-box-shadow: 0px 0px 0px 2px rgba(96, 93, 236, 1);
+        box-shadow: 0px 0px 0px 2px rgba(96, 93, 236, 1);
+    }
+
+    .element__input::-ms-reveal,
+    .element__input::-ms-clear {
+        display: none;
+    }
+
+    .element .eye {
+        position: absolute;
+        right: 1.2em;
+        top: 0.7em;
+    }
+
+    .element__input::placeholder {
+        color: #1D2530;
+    }
+
+    .element__error {
+        font-size: 0.7em;
+        color: lightcoral;
+    }
+
+.form-wrapper {
+    position: absolute;
+    top: 0;
+    left: -200vw;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .4s ease;
+    z-index: 15;
+    background: #F8FBFF;
+}
+
+    .form-wrapper:focus{
+        background: yellow;
+    }
+
+    .form-wrapper .form {
+        flex: 1 1 480px;
+    }
+
+    .form-wrapper.active {
+        left: 0;
+    }
+
+.form {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.07);
+    max-width: 480px;
+    border-radius: 5px;
+    background: #FFF;
+    min-height: 500px;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.form__header {
+    display: flex;
+    justify-content: right;
+}
+
+    .form__header:not(:last-child){
+        margin-bottom: 2rem;
+    }
+
+    .form__fieldset {
+        margin: 0;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+        padding: 7.25% 14.58%;
+    }
+
+.form__elements {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.625em;
+}
+
+/*END - FORM ELEMENT ===================================================================================*/

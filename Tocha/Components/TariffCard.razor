@@ -1,0 +1,17 @@
+﻿<div class="tariff-card">
+    <h4 class="tariff-card__title">@Item?.Name</h4>
+    <div class="tariff-card__body">
+        <p class="tariff-card__description">@Item?.Description</p>
+        <p class="tariff-card__amount">@Item?.Amount&#8381;/@Item?.Period</p>
+        <Button 
+            Title=@($"Подключить за {Item?.Amount}") 
+            Color="Colors.Purple" 
+            ButtonType="ButtonType.Button" 
+            Label="Подключить">&#8381;</Button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public TariffModel? Item { get; set; }
+}

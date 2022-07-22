@@ -1,0 +1,78 @@
+﻿.autorization {
+    display: flex;
+    column-gap: 0.625rem;
+    font-family: Gilroy;
+    font-weight: 700;
+}
+
+    .autorization ::deep .autorization__button {
+        font-size: 1rem;
+        font-family: 'Gilroy';
+        font-weight: 700;
+    }
+
+.appmenu {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    font-size: 1.25rem;
+    color: #1D2530;
+}
+
+.menu__items {
+    display: flex;
+    column-gap: 3em;
+    list-style: none;
+    justify-content: right;
+    flex-wrap: wrap;
+    row-gap: 1.5em;
+}
+
+.menu__item {
+}
+
+.menu__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+    .menu__link:hover {
+        color: #685ED6;
+    }
+
+@media (max-width: 768px) {
+    .menu {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 450px){
+    .appmenu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        z-index: -1;
+        justify-content: center;
+        background: #F8FBFF;
+    }
+
+        .appmenu.open {
+            display: flex;
+            z-index: 10;
+        }
+
+        .menu__items, .autorization {
+            flex-direction: column;
+            row-gap: 0.625em;
+            transform: scale(0);
+            transition: .4s ease;
+        }
+
+    .appmenu.open .menu__items, .appmenu.open .autorization {
+        transform: scale(1);
+    }
+}

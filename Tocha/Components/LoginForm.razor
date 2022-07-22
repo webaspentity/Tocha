@@ -1,0 +1,68 @@
+﻿@inject IJSRuntime js
+
+<div class=@((active) ? "form-wrapper active" : "form-wrapper") @onclick="()=> active = false">
+    <div class="form" @onclick:stopPropagation>
+        <div class="form__header">
+            <Button ButtonType="ButtonType.Close" OnClick="()=> active = false" />
+        </div>
+        <Title>Вход</Title>
+        <EditForm Model="@model" method="post" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit">
+
+            <DataAnnotationsValidator />
+
+            <fieldset class="form__fieldset">
+
+                <div class="form__elements">
+                    <div class="form__element element">
+                        <InputMask @bind-Value="model.Telephone" class="element__input" data-mask="0 (000) 000-00-00" placeholder="Телефон" tabindex="0" id="log-mask"/>
+                        <div class="element__error">
+                            <ValidationMessage For="@(() => @model.Telephone)" />
+                        </div>
+                    </div>
+
+                    <div class="form__element element">
+                        <InputText type=@inputType @bind-Value="model.Password" class="element__input" placeholder="Пароль" tabindex="0" />
+                        <Eye OnClick="ToggleInputType" />
+                        <div class="element__error">
+                            <ValidationMessage For="@(() => @model.Password)" />
+                        </div>
+                    </div>
+                </div>
+
+                <Button Title="Войти" ButtonType="ButtonType.Submit" Label="Войти" Color="Colors.Purple"/>
+
+            </fieldset>
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private bool active;
+    private LoginModel model = new LoginModel();
+    private string inputType = "password";
+
+    [Parameter]
+    public EventCallback ButtonCloseClick { get; set; }
+
+    private void OnInvalidSubmit() { }
+
+    private async void OnValidSubmit()
+    {
+        AppData.Autorized = true;
+        active = false;
+        AppData.Menu.Refresh();
+    }
+
+    private void ToggleInputType()
+    {
+        inputType = (inputType.Equals("text") ? "password" : "text");
+    }
+
+    public async void Open()
+    {
+        active = true;
+        StateHasChanged();
+        await js.InvokeVoidAsync("SetFocus", "log-mask");
+    }
+}

@@ -1,0 +1,36 @@
+﻿<footer class="footer" id="footer">
+    <Container>
+        <Logo />
+        <div class="footer__content">
+            <Spoiler Title="Telegram чат">
+                <ul class="footer__items">
+                    @foreach (MenuLink link in AppData.FooterChatLinks)
+                    {
+                    <li class="footer__item">
+                        <a class="footer__link" href="@link.Url">@link.Title</a>
+                    </li>
+                    }
+                </ul>
+            </Spoiler>
+            <Spoiler Title="Поддержка">
+                <ul class="footer__items">
+                    @foreach (MenuLink link in AppData.FooterSupportLinks)
+                    {
+                    <li class="footer__item">
+                        <a class="footer__link" href="@link.Url">@link.Title</a>
+                    </li>
+                    }
+                </ul>
+            </Spoiler>
+        </div>
+    </Container>
+    <div class="footer__rights">
+        <Container>
+            © 2021 Tocha. Все права защищены
+        </Container>
+    </div>
+</footer>
+
+@code {
+
+}

@@ -1,0 +1,12 @@
+﻿<div class="feature">
+    <img class="feature__icon" src="@Item?.Icon"/>
+    <div class="feature__content">
+        <h4 class="feature__title">@Item?.Title</h4>
+        <p class="feature__text">@Item?.Text</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public FeatureModel? Item { get; set; }
+}

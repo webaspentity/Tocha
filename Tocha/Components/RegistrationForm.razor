@@ -1,0 +1,101 @@
+﻿@inject IJSRuntime js
+
+<div class=@((active) ? "form-wrapper active" : "form-wrapper") @onclick="()=> active = false">
+    <div class="form" @onclick:stopPropagation>
+        <div class="form__header">
+            <Button ButtonType="ButtonType.Close" OnClick="()=> active = false" />
+        </div>
+        <Title>Регистрация</Title>
+        <EditForm Model="@model" method="post" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit">
+
+            <DataAnnotationsValidator />
+
+            <fieldset class="form__fieldset">
+
+                <div class="form__elements">
+                    <div class="form__element element">
+                        <InputMask @bind-Value="model.Telephone" class="element__input" data-mask="0 (000) 000-00-00" placeholder="Телефон" tabindex="0" id="reg-mask"/>
+                        <div class="element__error">
+                            <ValidationMessage For="@(() => @model.Telephone)" />
+                        </div>
+                    </div>
+
+                    <div class="form__element element">
+                        <InputText @bind-Value="model.Email" class="element__input" placeholder="Электронная почта" tabindex="0" />
+                        <div class="element__error">
+                            <ValidationMessage For="@(() => @model.Email)" />
+                        </div>
+                    </div>
+
+                    <div class="form__element element">
+                        <InputText type=@inputType_1 @bind-Value="model.Password" class="element__input" placeholder="Пароль" tabindex="0" />
+                        <Eye OnClick="ToggleInputType_1" />
+                        <div class="element__error">
+                            <ValidationMessage For="@(() => @model.Password)" />
+                        </div>
+                    </div>
+
+                    <div class="form__element element">
+                        <InputText type=@inputType_2 @bind-Value="password" class="element__input" placeholder="Повторите пароль" tabindex="0" />
+                        <Eye OnClick="ToggleInputType_2" />
+                        <div class="element__error">
+                            @error
+                        </div>
+                    </div>
+
+                </div>
+
+                <Button Title="Войти" ButtonType="ButtonType.Submit" Label="Войти" Color="Colors.Purple" />
+
+            </fieldset>
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private bool active;
+    private RegistrationModel model = new RegistrationModel();
+    private string inputType_1 = "password";
+    private string error = String.Empty;
+    private string? password = String.Empty;
+    private string inputType_2 = "password";
+
+    [Parameter]
+    public EventCallback ButtonCloseClick { get; set; }
+
+    private void OnInvalidSubmit() { }
+
+    private void OnValidSubmit()
+    {
+        if (!password.Equals(model.Password))
+        {
+            error = "Пароли не совпадают";
+        }
+        else
+        {
+            error = String.Empty;
+            AppData.Autorized = true;
+            active = false;
+            AppData.Menu.Refresh();
+        }
+    }
+
+    private void ToggleInputType_1()
+    {
+        inputType_1 = (inputType_1.Equals("text") ? "password" : "text");
+    }
+
+    private void ToggleInputType_2()
+    {
+        inputType_2 = (inputType_2.Equals("text") ? "password" : "text");
+    }
+
+    public async void Open()
+    {
+        active = true;
+        StateHasChanged();
+        await js.InvokeVoidAsync("SetFocus", "reg-mask");
+    }
+
+}

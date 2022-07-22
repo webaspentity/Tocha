@@ -1,0 +1,29 @@
+﻿<EditForm Model="model" method="post" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit" class="connection-form form">
+    <DataAnnotationsValidator />
+    <h3 class="form__title">Подключите Telegram чат уже сегодня</h3>
+    <fieldset class="form__fieldset">
+        <div class="form__elements">
+            <div class="form__element element">
+                <InputText @bind-Value="model.Email" class="element__input" placeholder="E-mail" tabindex="0" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @model.Email)" />
+                </div>
+            </div>
+        </div>
+        <Button Title="Отправить" ButtonType="ButtonType.Submit" Label="Отправить" />
+    </fieldset>
+</EditForm>
+
+@code {
+    private ConnectionModel model = new ConnectionModel();
+
+    private void OnValidSubmit()
+    {
+
+    }
+
+    private void OnInvalidSubmit()
+    {
+
+    }
+}

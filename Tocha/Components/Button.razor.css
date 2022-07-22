@@ -1,0 +1,88 @@
+﻿.button {
+    padding: 0.625em 1.25em;
+    min-width: 75px;
+    min-height: 45px;
+    transition: .4s ease;
+    border: none;
+    border-radius: 6px;
+}
+
+    .button:hover {
+        cursor: pointer;
+    }
+
+    .button:focus {
+        outline: none;
+    }
+
+    .button.pink {
+        background-color: #F1E4FF;
+        color: #685ED6;
+    }
+
+        .button.pink:hover, .button.pink:focus {
+            background-color: #C39BFB;
+        }
+
+        .button.pink:active {
+            background-color: #685ED6;
+            color: #FFF;
+        }
+
+    .button.purple {
+        background-color: #685ED6;
+        color: #FFF;
+    }
+
+        .button.purple:hover, .button.purple:focus {
+            background-color: #33AFE1;
+        }
+
+        .button.purple:active {
+            background-color: #18E1F7;
+        }
+
+.button-close {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+
+    .button-close:hover{
+        cursor: pointer;
+    }
+
+    .button-close:hover span {
+        background-color: lightcoral;
+    }
+
+        .button-close:focus{
+            outline: none;
+        }
+
+    .button-close:focus span{
+        background-color: lightcoral;
+    }
+
+    .button-close span {
+        transition: .4s ease;
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        height: 0.125rem;
+        width: 100%;
+        background-color: #685ED6;
+        top: calc(50% - (0.125 / 2)em);
+        border-radius: 4px;
+    }
+
+        .button-close span:nth-child(1) {
+            transform: rotate3d(0,0,1, 45deg);
+        }
+
+        .button-close span:nth-child(2) {
+            transform: rotate3d(0,0,1, -45deg);
+        }

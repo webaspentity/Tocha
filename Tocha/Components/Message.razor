@@ -1,0 +1,9 @@
+﻿<div class="message">
+    <p class="message__text">@Item.Text</p>
+    <span class="message__time">@Item.Time</span>
+</div>
+
+@code {
+    [Parameter]
+    public MessageModel Item { get; set; }
+}

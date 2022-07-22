@@ -1,0 +1,48 @@
+﻿@inject IJSRuntime js
+
+<div class=@((Open) ? "appmenu open" : "appmenu")>
+    @if (AppData.Autorized)
+    {
+        <nav class="menu">
+            <ul class="menu__items">
+                @foreach (MenuLink link in AppData.MenuLinks)
+                {
+                    <li class="menu__item">
+                        <a href="#" @onclick:preventDefault @onclick="()=> Scroll(link.Url)" class="menu__link">@link.Title</a>
+                    </li>
+                }
+                <a href="#" class="menu__link" @onclick:preventDefault @onclick="()=> AppData.Autorized = false">Выход</a>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <div class="autorization">
+            <Button ButtonType="ButtonType.Button" Title="Вход" Label="Вход" Color="Colors.Pink" Class="autorization__button" OnClick="LoginButtonClick" />
+            <Button ButtonType="ButtonType.Button" Title="Регистрация" Label="Регистрация" Color="Colors.Purple" Class="autorization__button" OnClick="RegistrationButtonClick" />
+        </div>
+    }
+</div>
+
+@code {
+
+    private async Task Scroll(string id)
+    {
+        await js.InvokeVoidAsync("Scroll", id);
+    }
+
+    [Parameter]
+    public EventCallback LoginButtonClick { get; set; }
+
+    [Parameter]
+    public EventCallback RegistrationButtonClick { get; set; }
+
+    [Parameter]
+    public bool Open { get; set; }
+
+    public void Refresh()
+    {
+        StateHasChanged();
+    }
+
+}
